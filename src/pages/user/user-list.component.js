@@ -13,7 +13,7 @@ const UserListComponent = (props) => {
                     <th>Surnames</th>
                     <th>Username</th>
                     <th>Role</th>
-                    <th></th>
+                    <th>Utils</th>
                 </tr>
             </thead>
             <tbody>

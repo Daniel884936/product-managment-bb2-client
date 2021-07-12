@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import ProductListComponent from "./pages/product/product-list.component";
+import ProductComponent from "./pages/product/product.component";
 import SupplierPageComponent from "./pages/suppplier/supplier-page.component";
 import UserPageComponent from "./pages/user/user-page.component";
 
@@ -39,6 +41,8 @@ class App extends Component{
                         <Switch>
                             <Route exact path ="/supplier" component ={SupplierPageComponent}></Route>
                             <Route exact path ="/user" component ={UserPageComponent}></Route>
+                            <Route exact path ="/product" component ={ProductListComponent}></Route>
+                            <Route exact path ="/product/new" component ={ProductComponent}></Route>
                         </Switch>
         </BrowserRouter> 
         </div>
