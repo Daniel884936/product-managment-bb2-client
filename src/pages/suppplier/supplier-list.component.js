@@ -1,38 +1,17 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import SupplierService from '../../services/supplier.service';
 
 export default class SupplierListComponent extends React.Component{
     constructor(props){
-        super();
-        this.loadAllSuppliers = this.loadAllSuppliers.bind(this);        
-        this.state = {
-            suppliers: []
-        }
-    }
-
-    componentDidMount(){
-        this.loadAllSuppliers();
-    }
-
-    loadAllSuppliers(){
-        SupplierService.getAll().then(response=>{
-            this.setState({
-                suppliers : response.data.data
-            })
-            console.log(response.data);
-        })
-        .catch(err=>{
-            console.log(err);
-        });
+        super();  
     }
 
     render(){    
-        const suppliers = this.state.suppliers;
+        let {suppliers} = this.props;
+        console.log(suppliers)
 
         return (
                 <table className="table">
-                    <thead>
+                    <thead className="thead-light">
                         <tr>
                             <th>#</th>
                             <th>Name</th>                
@@ -41,8 +20,8 @@ export default class SupplierListComponent extends React.Component{
                     <tbody>
                         { 
                         suppliers.map((supplier, index) =>(                                    
-                        <tr>
-                            <td>{index}</td>
+                        <tr key = {supplier.supplierId}>
+                            <td>{index + 1}</td>
                             <td>{supplier.name}</td>
                         </tr>
                         ))                

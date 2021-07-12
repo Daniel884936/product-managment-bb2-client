@@ -1,51 +1,50 @@
 import { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SupplierPageComponent from "./pages/suppplier/supplier-page.component";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css"
+import UserPageComponent from "./pages/user/user-page.component";
 
 
 class App extends Component{
     render(){
         return (
-        <div class="s-layout">
-                <div className="s-layout__sidebar">
-                <a className="s-sidebar__trigger" href="#0">
-                    <i className="fa fa-bars"></i>
-                </a>
-                
-                <nav className="s-sidebar__nav">
-                    <ul>
-                        <li>
-                        <a className="s-sidebar__nav-link" href="#0">
-                            <i className="fa fa-home"></i><em>Home</em>
-                        </a>
-                        </li>
-                        <li>
-                        <a className="s-sidebar__nav-link" href="#0">
-                            <i className="fa fa-user"></i><em>My Profile</em>
-                        </a>
-                        </li>
-                        <li>
-                        <a className="s-sidebar__nav-link" href="#0">
-                            <i className="fa fa-camera"></i><em>Camera</em>
-                        </a>
-                        </li>
-                    </ul>
-                </nav>
-                </div>
-                <main class="s-layout__content">
-                    <div className ="container">
-                     <BrowserRouter >
+  <div id="wrapper" className="animate">
+    <nav className="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-primary">
+      <a className="navbar-brand" href="#">LOGO</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarText">
+        <ul className="navbar-nav animate side-nav">
+          <li className="nav-item">
+            <a className="nav-link" href="#" title="Dashboard"><i className="fas fa-cube"></i> Dashboard <i className="fas fa-cube shortmenu animate"></i></a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#" title="Cart"><i className="fas fa-cart-plus"></i> Cart <i className="fas fa-cart-plus shortmenu animate"></i></a>
+          </li>
+        </ul>
+        <ul className="navbar-nav ml-md-auto d-md-flex">
+          <li className="nav-item">
+            <a className="nav-link" href="#"><i className="fas fa-user"></i> Profile</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#"><i className="fas fa-key"></i> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div className="container-fluid">
+        <div className ="container">
+        <BrowserRouter >
                         <Switch>
                             <Route exact path ="/supplier" component ={SupplierPageComponent}></Route>
+                            <Route exact path ="/user" component ={UserPageComponent}></Route>
                         </Switch>
-                    </BrowserRouter>  
-                    </div>                     
-                             
-                </main>
-        </div>                     
-            );
+        </BrowserRouter> 
+        </div>
+    </div>
+  </div>                    
+     );
     }
 }
 export default App;
