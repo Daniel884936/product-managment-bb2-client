@@ -18,12 +18,17 @@ class SupplierAddModalComponent extends React.Component{
                 >
                 <Modal.Header>
                     <Modal.Title>
-                        Supplier
+                        New Supplier
                     </Modal.Title>
                 </Modal.Header> 
-                <Modal.Header>
-                    <SupplierComponent countries ={countries}></SupplierComponent>
-                </Modal.Header>  
+                <Modal.Body> 
+                <div className="row">
+                        <div className="col">
+                            <SupplierComponent countries ={countries}></SupplierComponent>
+                        </div>
+                    </div>                                       
+                </Modal.Body>
+
             </Modal>
         )
     }

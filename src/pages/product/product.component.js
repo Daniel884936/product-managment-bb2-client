@@ -9,6 +9,7 @@ import SupplierModalComponent from '../../components/modals/supplier-modal.compo
 import SupplierService from '../../services/supplier.service'
 import SupplierListComponent from '../suppplier/supplier-list.component'
 import CountryService from '../../services/country.service'
+import SupplierAddModalComponent from '../../components/modals/supplier-add-modal.component'
 
 class ProductComponent extends React.Component{
 
@@ -17,7 +18,7 @@ class ProductComponent extends React.Component{
         this.state = {
             productStates: [],
             showSupplerModal: false , 
-            showSupplerAddModal: false,            
+            showAddSupplerModal: false,            
             suppliers: [], 
             supplersToSave: [],
             countries: []          
@@ -42,9 +43,13 @@ class ProductComponent extends React.Component{
         });
     }
 
-    setShowSupplierAddModal = ()=>{
-        
+    setShowSupplierAddModal = (show)=>{
+        this.setState({
+            showAddSupplerModal: show
+        })        
     }
+
+
     setShowSupplierModal = (show)=>{
         this.setState({
             showSupplerModal: show
@@ -52,7 +57,8 @@ class ProductComponent extends React.Component{
     }
 
     addNewSupplier = (suplier)=>{
-        this.setShowSupplierModal(false)
+        this.setShowSupplierModal(false);
+        this.setShowSupplierAddModal(true);
     }
 
 
@@ -169,13 +175,14 @@ class ProductComponent extends React.Component{
                     </div>
                 </div>
                 <SupplierModalComponent addNewSupplier = {this.addNewSupplier} addSupplierFromList = {this.addSupplierFromList} suppliers = {suppliers}  show= {this.state.showSupplerModal} setShow = {this.setShowSupplierModal}></SupplierModalComponent>                   
-                
+                <SupplierAddModalComponent countries = {this.state.countries} setShow ={this.setShowSupplierAddModal} show ={this.state.showAddSupplerModal}></SupplierAddModalComponent>
                { this.state.supplersToSave.length > 0 ?
                
                <div className="col-4">
                 <h3 className ="mb-4">Suppliers added</h3>
                 <div className="row shadow p-4 ml-3 bg-white rounded">
                      <SupplierListComponent suppliers={this.state.supplersToSave}></SupplierListComponent>
+                     
                 </div>                   
                 </div>
                 : null
